@@ -1,7 +1,7 @@
 import XCTest
 
-import vapor_declarativeTests
+import ControllerRoutingTests
 
 var tests = [XCTestCaseEntry]()
-tests += vapor_declarativeTests.allTests()
+tests += ControllerRoutingTests.allTests()
 XCTMain(tests)

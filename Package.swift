@@ -4,25 +4,38 @@
 import PackageDescription
 
 let package = Package(
-    name: "vapor-declarative",
+    name: "ControllerRouting",
+    platforms: [
+        .macOS(.v10_15)
+    ],
     products: [
-        // Products define the executables and libraries produced by a package, and make them visible to other packages.
-        .library(
-            name: "vapor-declarative",
-            targets: ["vapor-declarative"]),
+        .library(name: "ControllerRouting",
+                 targets: ["ControllerRouting"]
+        ),
+        
+        .executable(name: "Run", targets: ["Run"]),
+        .library(name: "App", targets: ["App"]),
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
+        .package(url: "https://github.com/vapor/vapor.git", from: "4.10.0"),
+        .package(url: "https://github.com/vapor/fluent.git", from: "4.0.0"),
+        .package(url: "https://github.com/vapor/fluent-sqlite-driver.git", from: "4.0.0-rc.2"),
+        .package(url: "https://github.com/wickwirew/Runtime.git", from: "2.1.1")
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
-        .target(
-            name: "vapor-declarative",
-            dependencies: []),
-        .testTarget(
-            name: "vapor-declarativeTests",
-            dependencies: ["vapor-declarative"]),
+        .target(name: "ControllerRouting", dependencies: [
+            .product(name: "Vapor", package: "vapor"),
+            .product(name: "Runtime", package: "Runtime")
+        ]),
+        
+        .target(name: "App", dependencies: [
+            .product(name: "Fluent", package: "fluent"),
+            .product(name: "FluentSQLiteDriver", package: "fluent-sqlite-driver"),
+            .product(name: "Vapor", package: "vapor"),
+            "ControllerRouting"
+        ]),
+        .target(name: "Run", dependencies: ["App"]),
+        
+        .testTarget(name: "ControllerRoutingTests", dependencies: ["ControllerRouting"]),
     ]
 )
