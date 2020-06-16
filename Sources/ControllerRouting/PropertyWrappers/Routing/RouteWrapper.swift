@@ -18,5 +18,11 @@ public protocol RouteWrapper: RouteConvertible {
 }
 
 public protocol RouteConvertible {
-    func route(_ app: Application)
+    func route(_ routes: RoutesBuilder)
+}
+
+public extension RouteWrapper {
+    func route(_ routes: RoutesBuilder) {
+        routes.on(method, path, use: closure)
+    }
 }

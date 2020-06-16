@@ -28,13 +28,13 @@ let package = Package(
             .product(name: "Runtime", package: "Runtime")
         ]),
         
-        .target(name: "App", dependencies: [
-            .product(name: "Fluent", package: "fluent"),
-            .product(name: "FluentSQLiteDriver", package: "fluent-sqlite-driver"),
-            .product(name: "Vapor", package: "vapor"),
-            "ControllerRouting"
-        ]),
-        .target(name: "Run", dependencies: ["App"]),
+//        .target(name: "App", dependencies: [
+//            .product(name: "Fluent", package: "fluent"),
+//            .product(name: "FluentSQLiteDriver", package: "fluent-sqlite-driver"),
+//            .product(name: "Vapor", package: "vapor"),
+//            "ControllerRouting"
+//        ]),
+//        .target(name: "Run", dependencies: ["App"]),
         
         .testTarget(name: "ControllerRoutingTests", dependencies: ["ControllerRouting"]),
     ]

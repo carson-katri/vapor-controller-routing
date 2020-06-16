@@ -30,8 +30,4 @@ public struct Post<Response: ResponseEncodable>: RouteWrapper {
     public var wrappedValue: EventHandler {
         get { closure }
     }
-    
-    public func route(_ app: Application) {
-        app.post(path, use: closure)
-    }
 }

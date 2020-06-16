@@ -23,8 +23,4 @@ public struct Get<Response: ResponseEncodable>: RouteWrapper {
     public var wrappedValue: EventHandler {
         get { closure }
     }
-    
-    public func route(_ app: Application) {
-        app.get(path, use: closure)
-    }
 }

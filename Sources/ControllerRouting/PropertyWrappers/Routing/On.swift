@@ -24,8 +24,4 @@ public struct On<Response: ResponseEncodable>: RouteWrapper {
     public var wrappedValue: EventHandler {
         get { closure }
     }
-    
-    public func route(_ app: Application) {
-        app.on(method, path, use: closure)
-    }
 }
