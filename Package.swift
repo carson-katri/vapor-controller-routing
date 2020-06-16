@@ -13,8 +13,8 @@ let package = Package(
                  targets: ["ControllerRouting"]
         ),
         
-        .executable(name: "Run", targets: ["Run"]),
-        .library(name: "App", targets: ["App"]),
+//        .executable(name: "Run", targets: ["Run"]),
+//        .library(name: "App", targets: ["App"]),
     ],
     dependencies: [
         .package(url: "https://github.com/vapor/vapor.git", from: "4.10.0"),
